@@ -34,7 +34,7 @@ Things you may want to cover:
 |last_name_kanji|string|null:false|
 |first_name_kana|string|null:false|
 |last_name_kana|string|null:false|
-|birth_day|data|null:false|
+|birth_day|date|null:false|
  
 ### association
 
@@ -49,11 +49,11 @@ Things you may want to cover:
 |content|text|null:false|
 |price|integer|null:false|
 |user|references|null:false, foreign_key:true|
-|categoly|integer|null:false, foreign_key:true|
-|status|integer|null:false, foreign_key:true|
-|genre|integer|null:false, foreign_key:true|
-|day|integer|null:false, foreign_key:true|
-|place|integer|null:false, foreign_key:true|
+|categoly_id|integer|null:false, foreign_key:true|
+|status_id|integer|null:false, foreign_key:true|
+|genre_id|integer|null:false, foreign_key:true|
+|day_id|integer|null:false, foreign_key:true|
+|place_id|integer|null:false, foreign_key:true|
 
 
 ### association
@@ -84,7 +84,7 @@ Things you may want to cover:
 |build_name|text|-------|
 |tell|integer|null:false|
 |record|references|null:false, foreign_key:true|
-|place|integer|null:false, foreign_key:true|
+|place_id|integer|null:false, foreign_key:true|
 
 ### association
 
