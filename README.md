@@ -51,7 +51,7 @@ Things you may want to cover:
 |user|references|null:false, foreign_key:true|
 |categoly_id|integer|null:false, foreign_key:true|
 |status_id|integer|null:false, foreign_key:true|
-|genre_id|integer|null:false, foreign_key:true|
+|payer_id|integer|null:false, foreign_key:true|
 |day_id|integer|null:false, foreign_key:true|
 |place_id|integer|null:false, foreign_key:true|
 
@@ -81,7 +81,7 @@ Things you may want to cover:
 |post|string|null:false|
 |city|string|null:false|
 |line|string|null:false |
-|build_name|text|-------|
+|build_name|string|-------|
 |tell|integer|null:false|
 |record|references|null:false, foreign_key:true|
 |place_id|integer|null:false, foreign_key:true|
