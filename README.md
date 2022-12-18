@@ -49,11 +49,11 @@ Things you may want to cover:
 |content|text|null:false|
 |price|integer|null:false|
 |user|references|null:false, foreign_key:true|
-|categoly_id|integer|null:false, foreign_key:true|
-|status_id|integer|null:false, foreign_key:true|
-|payer_id|integer|null:false, foreign_key:true|
-|day_id|integer|null:false, foreign_key:true|
-|place_id|integer|null:false, foreign_key:true|
+|categoly_id|integer|null:false|
+|status_id|integer|null:false|
+|payer_id|integer|null:false|
+|delivery_id|integer|null:false|
+|place_id|integer|null:false|
 
 
 ### association
@@ -82,9 +82,9 @@ Things you may want to cover:
 |city|string|null:false|
 |line|string|null:false |
 |build_name|string|-------|
-|tell|integer|null:false|
+|tell|string|null:false|
 |record|references|null:false, foreign_key:true|
-|place_id|integer|null:false, foreign_key:true|
+|place_id|integer|null:false|
 
 ### association
 
