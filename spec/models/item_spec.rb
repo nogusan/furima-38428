@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  before do 
+  before do
     @item = FactoryBot.build(:item)
   end
 
@@ -59,12 +59,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it '価格は、¥10000000以上は保存不可であること' do
-        @item.price = Faker::Number.number(10000000 )
+        @item.price = Faker::Number.number(10_000_000)
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
       it '価格は、¥299以下は保存不可であること' do
-        @item.price = Faker::Number.between(from: 0, to: 299 )
+        @item.price = Faker::Number.between(from: 0, to: 299)
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
