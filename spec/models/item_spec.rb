@@ -69,20 +69,20 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
       it '価格は、¥299以下は保存不可であること' do
-        @item.price = Faker::Number.between(from: 0, to: 299)
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
       it '価格は半角英字が含むと保存できない' do
         @item.price = 'aa'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price is out of setting range')
+        expect(@item.errors.full_messages).to include('Price Half width number', 'Price is out of setting range')
       end
       it '価格は全角文字が含むと保存できない' do
         @item.price = 'ああ'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price is out of setting range')
+        expect(@item.errors.full_messages).to include('Price Half width number', 'Price is out of setting range')
       end
     end
   end
-end
+end 
