@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :edit]
   before_action :item_action, except: [:index, :new, :create]
 
   def index
@@ -20,6 +20,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
   end
 
   private
