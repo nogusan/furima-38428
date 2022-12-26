@@ -88,4 +88,4 @@ Things you may want to cover:
 
 ### association
 
--belongs_to :orders
+-belongs_to :order
