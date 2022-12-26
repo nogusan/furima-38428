@@ -83,7 +83,7 @@ Things you may want to cover:
 |line|string|null:false |
 |build_name|string|-------|
 |tell|string|null:false|
-|record|references|null:false, foreign_key:true|
+|order|references|null:false, foreign_key:true|
 |place_id|integer|null:false|
 
 ### association
