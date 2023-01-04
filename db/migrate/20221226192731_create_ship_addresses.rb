@@ -8,7 +8,7 @@ class CreateShipAddresses < ActiveRecord::Migration[6.0]
       t.string :build_name
       t.string :tell, null: false
       t.references :order, null: false, foreign_key: true
-      t.integer :place_id, null: false
+      t.integer :delivery_id, null: false
       t.timestamps
     end
   end
