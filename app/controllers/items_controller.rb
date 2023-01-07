@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @order = Order.includes(:item)
   end
 
   def edit
