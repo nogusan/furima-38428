@@ -4,7 +4,7 @@ RSpec.describe OrderShipAddress, type: :model do
   describe 'user購入記録の保存' do
     before do
       user = FactoryBot.create(:user)
-      
+
       @order_ship_address = FactoryBot.build(:order_ship_address, user_id: user.id)
     end
 
@@ -67,12 +67,12 @@ RSpec.describe OrderShipAddress, type: :model do
       it 'tellが半角数字のみでないと保存できないこと' do
         @order_ship_address.tell = '333-3333-3333'
         @order_ship_address.valid?
-        expect(@order_ship_address.errors.full_messages).to include("Tell is invalid. Input only number")
+        expect(@order_ship_address.errors.full_messages).to include('Tell is invalid. Input only number')
       end
       it 'tellが10字以下だと保存できないこと' do
-        @order_ship_address.tell = 123456789
+        @order_ship_address.tell = 123_456_789
         @order_ship_address.valid?
-        expect(@order_ship_address.errors.full_messages).to include("Tell is too short")
+        expect(@order_ship_address.errors.full_messages).to include('Tell is too short')
       end
     end
   end

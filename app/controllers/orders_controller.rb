@@ -21,31 +21,30 @@ class OrdersController < ApplicationController
   end
 
   private
+
   def item_params
     @item = Item.find(params[:item_id])
   end
 
   def order_ship_address_params
-    params.require(:order_ship_address).permit(:post, :city, :line, :build_name, :tell, :delivery_id).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
+    params.require(:order_ship_address).permit(:post, :city, :line, :build_name, :tell, :delivery_id).merge(
+      user_id: current_user.id, item_id: @item.id, token: params[:token]
+    )
   end
 
   def already_solid_out
     @orders = Order.includes(:item)
-    @orders.each do |order| 
-      if order.item_id == @item.id
-        redirect_to root_path 
-      end
+    @orders.each do |order|
+      redirect_to root_path if order.item_id == @item.id
     end
   end
 
   def my_item
-    if current_user.id == @item.user_id
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id == @item.user_id
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item[:price],
       card: order_ship_address_params[:token],
@@ -53,4 +52,3 @@ class OrdersController < ApplicationController
     )
   end
 end
-

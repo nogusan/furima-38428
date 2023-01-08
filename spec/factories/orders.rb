@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :order do
     association :users
-    association :items 
+    association :items
   end
 end
