@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :item_params, only: [:index, :create]
+  before_action :already_solid_out, only: :index
+  before_action :my_item, only: :index
 
   def index
     @order_ship_address = OrderShipAddress.new
@@ -25,6 +27,21 @@ class OrdersController < ApplicationController
 
   def order_ship_address_params
     params.require(:order_ship_address).permit(:post, :city, :line, :build_name, :tell, :delivery_id).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
+  end
+
+  def already_solid_out
+    @orders = Order.includes(:item)
+    @orders.each do |order| 
+      if order.item_id == @item.id
+        redirect_to root_path 
+      end
+    end
+  end
+
+  def my_item
+    if current_user.id == @item.user_id
+      redirect_to root_path
+    end
   end
 
   def pay_item

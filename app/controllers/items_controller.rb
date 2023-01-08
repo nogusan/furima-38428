@@ -2,10 +2,11 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show ]
   before_action :item_action, except: [:index, :new, :create]
   before_action :contributor_confirmation, only: [:edit, :destroy]
+  before_action :already_solid_out, only: :edit
 
   def index
     @items = Item.all.order('created_at DESC')
-    @order = Order.includes(:item)
+    @orders = Order.includes(:item)
   end
 
   def new
@@ -22,7 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @order = Order.includes(:item)
+    @order = Order.where(item_id: @item.id).each {|o| o}
   end
 
   def edit
@@ -54,5 +55,12 @@ class ItemsController < ApplicationController
 
   def contributor_confirmation
     redirect_to root_path unless current_user == @item.user
+  end
+
+  def already_solid_out
+    order = Order.where(item_id: @item.id).each {|o| o}
+    if order != []
+      redirect_to root_path 
+    end
   end
 end
