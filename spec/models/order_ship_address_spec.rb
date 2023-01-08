@@ -78,7 +78,7 @@ RSpec.describe OrderShipAddress, type: :model do
       it 'tellが12字以上だと保存できないこと' do
         @order_ship_address.tell = 123_456_789_123
         @order_ship_address.valid?
-        expect(@order_ship_address.errors.full_messages).to include('Tell is too short')
+        expect(@order_ship_address.errors.full_messages).to include('Tell is too long')
       end
     end
   end
