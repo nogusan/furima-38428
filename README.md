@@ -84,7 +84,7 @@ Things you may want to cover:
 |build_name|string|-------|
 |tell|string|null:false|
 |order|references|null:false, foreign_key:true|
-|place_id|integer|null:false|
+|delivery_id|integer|null:false|
 
 ### association
 
