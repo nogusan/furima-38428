@@ -4,8 +4,9 @@ RSpec.describe OrderShipAddress, type: :model do
   describe 'user購入記録の保存' do
     before do
       user = FactoryBot.create(:user)
-
-      @order_ship_address = FactoryBot.build(:order_ship_address, user_id: user.id)
+      item = FactoryBot.create(:item)
+      @order_ship_address = FactoryBot.build(:order_ship_address, user_id: user.id, item_id: item.id)
+      sleep 0.05
     end
 
     context '内容に問題ない場合' do
@@ -25,7 +26,7 @@ RSpec.describe OrderShipAddress, type: :model do
         expect(@order_ship_address.errors.full_messages).to include("User can't be blank")
       end
       it 'itemが紐付いてないと保存ができないこと' do
-        @order_ship_address.item_id = nil
+        @order_ship_address.item_id = ''
         @order_ship_address.valid?
         expect(@order_ship_address.errors.full_messages).to include("Item can't be blank")
       end
@@ -69,8 +70,13 @@ RSpec.describe OrderShipAddress, type: :model do
         @order_ship_address.valid?
         expect(@order_ship_address.errors.full_messages).to include('Tell is invalid. Input only number')
       end
-      it 'tellが10字以下だと保存できないこと' do
+      it 'tellが9字以下だと保存できないこと' do
         @order_ship_address.tell = 123_456_789
+        @order_ship_address.valid?
+        expect(@order_ship_address.errors.full_messages).to include('Tell is too short')
+      end
+      it 'tellが12字以上だと保存できないこと' do
+        @order_ship_address.tell = 123_456_789_123
         @order_ship_address.valid?
         expect(@order_ship_address.errors.full_messages).to include('Tell is too short')
       end

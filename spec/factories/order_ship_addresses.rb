@@ -7,6 +7,5 @@ FactoryBot.define do
     line { '1-1' }
     build_name { '足立マンション' }
     tell { 3_333_333_333 }
-    item_id { Faker::Number.between(to: 999) }
   end
 end
