@@ -39,7 +39,7 @@ Things you may want to cover:
 ### association
 
 -has_many :items
--has_many :records
+-has_many :orders
 
 ## itemsテーブル
 
@@ -59,9 +59,9 @@ Things you may want to cover:
 ### association
 
 -belongs_to :user
--has_one :record
+-has_one :order
 
-## recordsテーブル
+## ordersテーブル
 
 |column|type|options|
 |------|----|-------|
@@ -83,9 +83,9 @@ Things you may want to cover:
 |line|string|null:false |
 |build_name|string|-------|
 |tell|string|null:false|
-|record|references|null:false, foreign_key:true|
-|place_id|integer|null:false|
+|order|references|null:false, foreign_key:true|
+|delivery_id|integer|null:false|
 
 ### association
 
--belongs_to :record
+-belongs_to :order

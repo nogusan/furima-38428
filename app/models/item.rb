@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to :payer
   belongs_to :delivery
   belongs_to :place
+  has_one :order
 
   validates :item_name, presence: true
   validates :content, presence: true
