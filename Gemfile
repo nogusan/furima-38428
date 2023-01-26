@@ -35,7 +35,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'gimei'
-  
+
   gem 'capistrano'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
@@ -83,3 +83,4 @@ gem 'image_processing', '~> 1.2'
 
 gem 'payjp'
 gem "aws-sdk-s3", require: false
+gem "net-http"
